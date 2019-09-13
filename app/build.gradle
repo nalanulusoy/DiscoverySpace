@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.1"
+    defaultConfig {
+        applicationId "com.nalan.discoveryspace"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
+    implementation 'androidx.core:core-ktx:1.2.0-alpha04'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
+
+    /*RxJava lib*/
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+
+    /*Retrofit lib*/
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.6.0'
+
+
+    /*Dagger*/
+    api "com.google.dagger:dagger:$daggerVer"
+    api "com.google.dagger:dagger-android:$daggerVer"
+    api "com.google.dagger:dagger-android-support:$daggerVer"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVer"
+
+    kapt "com.google.dagger:dagger-compiler:$daggerVer"
+     "com.jakewharton.timber:timber:$timberVersion"
+
+
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+
+}

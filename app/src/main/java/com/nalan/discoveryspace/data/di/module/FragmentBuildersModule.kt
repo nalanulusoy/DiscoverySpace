@@ -9,7 +9,6 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
-    internal abstract fun contributeMarsPhotosFragment(): MarsPhotosFragment
-
+    abstract fun contributeMarsPhotosFragment(): MarsPhotosFragment
 
 }

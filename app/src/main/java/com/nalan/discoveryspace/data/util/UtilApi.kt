@@ -4,7 +4,7 @@ import com.nalan.discoveryspace.data.data.ApiClient
 import com.nalan.discoveryspace.data.data.ApiService.getClient
 
 
-class UtilApi {
+object UtilApi {
     val BASE_URL = "https://api.nasa.gov/"
 
     fun getAPIService(): ApiClient {

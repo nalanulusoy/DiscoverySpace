@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.nalan.discoveryspace.data.SpaceApp
 import com.nalan.discoveryspace.data.di.component.DaggerAppComponent
-import com.nalan.discoveryspace.data.di.module.AppModule
+
 import dagger.android.AndroidInjection
 import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.HasSupportFragmentInjector
@@ -16,8 +16,8 @@ import dagger.android.support.HasSupportFragmentInjector
 
 object AppInjector {
     fun init(spaceApp: SpaceApp) {
-        DaggerAppComponent.builder().appModule(AppModule(spaceApp)).build().inject(spaceApp)
-        spaceApp.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
+        DaggerAppComponent.builder().application(spaceApp).build().inject(spaceApp)
+          spaceApp.registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
             override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
                 handleActivity(activity)
             }
@@ -58,7 +58,8 @@ object AppInjector {
                     override fun onFragmentCreated(
                         fm: FragmentManager,
                         f: Fragment,
-                        savedInstanceState: Bundle?) {
+                        savedInstanceState: Bundle?
+                    ) {
                         if (f is Injectable) {
                             AndroidSupportInjection.inject(f)
                         }
@@ -66,4 +67,5 @@ object AppInjector {
                 }, true
             )
         }
-    }}
+    }
+}

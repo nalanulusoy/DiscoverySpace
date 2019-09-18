@@ -27,7 +27,7 @@ ext.retrofitVersion = '2.3.0'
 ext.okhttpVersion = '3.4.1'
 ext.timberVersion = "4.6.1"
 ext.daggerVer="2.23.2"
-
+ext.paging_version = "2.1.0"
 task clean(type: Delete) {
     delete rootProject.buildDir
 }

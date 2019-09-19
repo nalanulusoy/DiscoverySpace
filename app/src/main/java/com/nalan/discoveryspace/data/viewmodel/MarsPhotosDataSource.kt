@@ -3,23 +3,26 @@ package com.nalan.discoveryspace.data.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
+import com.nalan.discoveryspace.data.data.ApiClient
 import com.nalan.discoveryspace.data.data.model.Space
 import com.nalan.discoveryspace.data.data.model.Status
-import com.nalan.discoveryspace.data.util.UtilApi
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
 class MarsPhotosDataSource : PageKeyedDataSource<Int, Space.Photos>() {
     var pageNumber = 0
+    @Inject
+    lateinit var apiClient: ApiClient
     private val progressLiveStatus = MutableLiveData<Status>()
     fun getProgressLiveStatus() = progressLiveStatus
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Space.Photos>) {
         Log.e("source", "after")
 
         val currentPage = params.key
-        UtilApi.getAPIService().getMarsPhotos(params.key, 1000)
+        apiClient.getMarsPhotos(params.key, 1000)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<Space> {
@@ -51,10 +54,11 @@ class MarsPhotosDataSource : PageKeyedDataSource<Int, Space.Photos>() {
     }
 
 
-    override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Space.Photos>
+    override fun loadInitial(
+        params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Space.Photos>
     ) {
-       // networkState.postValue()
-        UtilApi.getAPIService().getMarsPhotos(pageNumber, 1000)
+        // networkState.postValue()
+        apiClient.getMarsPhotos(pageNumber, 1000)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : Observer<Space> {
@@ -77,7 +81,7 @@ class MarsPhotosDataSource : PageKeyedDataSource<Int, Space.Photos>() {
 
                 override fun onError(e: Throwable) {
                     Log.e("ERROR", e.message)
-                   // networkState.postValue(NetworkState(Status.FAILED, e.message))
+                    // networkState.postValue(NetworkState(Status.FAILED, e.message))
                 }
 
                 override fun onComplete() {
@@ -87,8 +91,6 @@ class MarsPhotosDataSource : PageKeyedDataSource<Int, Space.Photos>() {
             })
 
     }
-
-
 
 
 }

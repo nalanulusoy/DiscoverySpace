@@ -2,6 +2,7 @@ package com.nalan.discoveryspace.data.di.component
 
 import android.app.Application
 import com.nalan.discoveryspace.data.SpaceApp
+import com.nalan.discoveryspace.data.data.ApiClient
 import com.nalan.discoveryspace.data.di.module.*
 import dagger.BindsInstance
 import dagger.Component
@@ -13,7 +14,7 @@ import javax.inject.Singleton
 
 @Singleton
 @Component(
-    modules = [AndroidInjectionModule::class,AppModule::class, FragmentBuildersModule::class, MainActivityModule::class, ViewModelModule::class
+    modules = [AndroidInjectionModule::class,NetworkModule::class, FragmentBuildersModule::class, MainActivityModule::class, ViewModelModule::class
     ]
 )
 
@@ -23,10 +24,11 @@ import javax.inject.Singleton
     interface Builder {
         @BindsInstance
         fun application(application: Application): Builder
-
         fun build(): AppComponent
+        fun networkModule(networkModule: NetworkModule): Builder
     }
 
     fun inject(application: SpaceApp)
+
 }
 

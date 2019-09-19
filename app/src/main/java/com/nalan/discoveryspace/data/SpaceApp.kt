@@ -4,9 +4,8 @@ import android.app.Activity
 import android.app.Application
 import androidx.fragment.app.Fragment
 import com.nalan.discoveryspace.data.di.AppInjector.init
-import com.nalan.discoveryspace.data.di.component.AppComponent
+
 import com.nalan.discoveryspace.data.di.component.DaggerAppComponent
-import com.nalan.discoveryspace.data.di.module.AppModule
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

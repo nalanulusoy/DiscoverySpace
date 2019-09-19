@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             navigationController.navigateToHomeFragment()
         }
+
     }
 
 }

@@ -58,6 +58,12 @@ dependencies {
      "com.jakewharton.timber:timber:$timberVersion"
 
 
+    // ViewModel & LiveData
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+
+
 
     implementation "androidx.paging:paging-runtime:$paging_version"
     implementation "androidx.paging:paging-rxjava2:$paging_version"
@@ -65,5 +71,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
 }

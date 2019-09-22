@@ -6,7 +6,8 @@
 I worked with nasa api( https://api.nasa.gov/).
 # Uses the following technologies
 
-A simple discoverySpace app with Clean Architecture(MVVM) .
+A simple discoverySpace app with Clean Architecture(MVVM) 
+
 RxJava 2
 
 Glide 4
@@ -18,6 +19,8 @@ Dagger 2
 View Model
 
 Pagination Library 
+
+Live Data
 
 
 

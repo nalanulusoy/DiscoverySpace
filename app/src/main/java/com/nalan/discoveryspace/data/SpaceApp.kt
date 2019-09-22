@@ -3,6 +3,7 @@ package com.nalan.discoveryspace.data
 import android.app.Activity
 import android.app.Application
 import androidx.fragment.app.Fragment
+import com.nalan.discoveryspace.data.di.AppInjector
 import com.nalan.discoveryspace.data.di.AppInjector.init
 
 import com.nalan.discoveryspace.data.di.component.DaggerAppComponent
@@ -22,8 +23,9 @@ class SpaceApp : Application(), HasActivityInjector , HasSupportFragmentInjector
     lateinit var dispatchingAndroidInjectorFragment: DispatchingAndroidInjector<Fragment>
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.builder().application(this).build().inject(this)
+        DaggerAppComponent.create().inject(this)
         init(this)
+
 
     }
 

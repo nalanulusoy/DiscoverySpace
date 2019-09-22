@@ -7,6 +7,7 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 
+
 interface ApiClient {
     @GET(AppConstants.API_CLIENT.MARS_PHOTOS)
     fun getMarsPhotos(@Query("page") page: Int,@Query("sol") sol: Int): Observable<Space>
